@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="Author" content="Aravind S" />
+    <meta
+      name="description"
+      content="This is the project for shop's dine-in management. For using this site we can handle the order management and customers avoiding the queue"
+    />
+    <title>Nisha's Biryani Shop</title>
+    <link rel="icon" href="img/icon.png" type="Image/x-icon" />
+    <link rel="stylesheet" href="css/main.css" type="text/css" />
+    <link rel="stylesheet" href="css/about.css" type="text/css" />
+    <link rel="stylesheet" href="css/menu.css" type="text/css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Menu Bar-->
+    <header class="header">
+      <nav class="header-nav">
+        <div class="logo-nav">
+          <img
+            src="img/Logo.png"
+            alt="Company Logo"
+            loading="lazy"
+            width="150px"
+            title="Nisha's Biryani Shop"
+          />
+        </div>
+        <div class="menu-container">
+          <ul>
+            <li>
+              <h3><a href="index.html">Menu</a></h3>
+            </li>
+            <li>
+              <h3><a href="about.html">About</a></h3>
+            </li>
+            <li>
+              <h3><a href="contact.html">Contact</a></h3>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="headingContainer">
+        <h2>A Royal Feast Awaits You</h2>
+        <p>
+          Place your dine-in orders seamlessly through our website, and we’ll
+          serve your meal fresh at your table.
+        </p>
+      </div>
+
+      <!-- Cart Bar -->
+
+      <div class="cartContainer">
+        <div class="cart-nav">
+          <h3>Your Cart</h3>
+          <div class="cart-logo-box">
+            <div class="cart-count">0</div>
+            <i class="fa-solid fa-bowl-rice cart-Logo"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter and search -->
+      <div class="filter-search-container">
+        <div class="btn-container">
+          <button class="btn-filter filter-active" data-filter="all">
+            All
+          </button>
+          <button class="btn-filter" data-filter="biryani">Biryani</button>
+          <button class="btn-filter" data-filter="starters">Starters</button>
+          <button class="btn-filter" data-filter="juice">Juice</button>
+        </div>
+        <input type="text" placeholder="Search Food..." id="food-search" />
+      </div>
+
+      <!-- Cart -->
+      <div class="cart">
+        <h2 class="cart-title">Your Orders</h2>
+        <div class="cart-content">
+          <!-- <div class="cart-box">
+
+                <img src="/img/chicken-briyani.png" class="cart-img" width="70px">
+                <div class="cart-detail">
+                  <h2 class="cart-product-title">Chicken Biryani</h2>
+                  <span class="cart-price">₹ : 180.00</span>
+                  <div class="cart-quantity">
+                    <button id="decrement">-</button>
+                    <span class="number">1</span>
+                    <button id="increment">+</button>
+                  </div>
+                </div>
+                <i class="fa-solid fa-trash-can cart-remove"></i>
+                
+              </div>
+
+              <div class="cart-box">
+                <img src="/img/chicken-briyani.png" class="cart-img" width="70px">
+                <div class="cart-detail">
+                  <h2 class="cart-product-title">Chicken Biryani</h2>
+                  <span class="cart-price">₹ : 180.00</span>
+                  <div class="cart-quantity">
+                    <button id="decrement">-</button>
+                    <span class="number">1</span>
+                    <button id="increment">+</button>
+                  </div>
+                </div>
+                <i class="fa-solid fa-trash-can cart-remove"></i>
+              </div> -->
+        </div>
+        <div class="total">
+          <div class="total-title">Total</div>
+          <div class="total-price">
+            ₹ : <span id="totalOrderPrice">00</span>.00
+          </div>
+        </div>
+        <form id="order-form">
+          <input
+            type="text"
+            placeholder="Enter your Name"
+            required
+            id="customer-name"
+          />
+          <input
+            type="number"
+            placeholder="Enter your Table Number"
+            required
+            id="table-number"
+            min="1"
+            max="25"
+          />
+          <button class="button-buy">Place Order</button>
+        </form>
+        <i class="fa-solid fa-xmark" id="cart-close"></i>
+      </div>
+
+      <!-- Menu -->
+      <div class="products">
+        <div class="items" data-item="chicken biryani" data-id="1">
+          <img
+            src="img/chicken-briyani.png"
+            alt="chicken biryani"
+            width="120px"
+            height="130px"
+            loading="lazy"
+          />
+          <h3 class="item-name">Chicken Biryani</h3>
+          <h3 class="item-prize">₹ : 180.00</h3>
+          <div class="cart-logo">
+            <h4>Add to cart</h4>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+        </div>
+
+        <div class="items" data-item="mutton biryani" data-id="2">
+          <img
+            src="img/mutton-biryabi.png"
+            alt="Mutton biryani"
+            width="120px"
+            height="150px"
+          />
+          <h3 class="item-name">Mutton Biryani</h3>
+          <h3 class="item-prize">₹ : 250.00</h3>
+          <div class="cart-logo">
+            <h4>Add to cart</h4>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+        </div>
+
+        <div class="items" data-item="prawn biryani" data-id="3">
+          <img
+            src="img/prawn-briyani.png"
+            alt="Prawn biryani"
+            width="120px"
+            height="150px"
+          />
+          <h3 class="item-name">Prawn Biryani</h3>
+          <h3 class="item-prize">₹ : 230.00</h3>
+          <div class="cart-logo">
+            <h4>Add to cart</h4>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+        </div>
+
+        <div class="items" data-item="fish biryani" data-id="4">
+          <img
+            src="img/fish-biryani.png"
+            alt="Fish biryani"
+            width="120px"
+            height="150px"
+          />
+          <h3 class="item-name">Fish Biryani</h3>
+          <h3 class="item-prize">₹ : 220.00</h3>
+          <div class="cart-logo">
+            <h4>Add to cart</h4>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+        </div>
+
+        <div class="items" data-item="chicken fried rice" data-id="5">
+          <img
+            src="img/chicken-friedrice.png"
+            alt="Chicken Fried Rice"
+            width="120px"
+            height="150px"
+          />
+          <h3 class="item-name">Chicken Fried Rice</h3>
+          <h3 class="item-prize">₹ : 120.00</h3>
+          <div class="cart-logo">
+            <h4>Add to cart</h4>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+        </div>
+
+        <div class="items" data-item="biryani" data-id="6">
+          <img
+            src="img/rice-only.png"
+            alt="Biryani"
+            width="120px"
+            height="150px"
+          />
+          <h3 class="item-name">Biryani (Rice only)</h3>
+          <h3 class="item-prize">₹ : 120.00</h3>
+          <div class="cart-logo">
+            <h4>Add to cart</h4>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+        </div>
+
+        <div class="items" data-item="rice" data-id="7">
+          <img
+            src="img/white-rice.png"
+            alt="Rice"
+            width="120px"
+            height="130px"
+          />
+          <h3 class="item-name">White Rice</h3>
+          <h3 class="item-prize">₹ : 100.00</h3>
+          <div class="cart-logo">
+            <h4>Add to cart</h4>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+        </div>
+
+        <div class="items" data-item="grill chicken starters" data-id="8">
+          <img
+            src="img/gril-chicken.png"
+            alt="Grill Chicken"
+            width="120px"
+            height="130px"
+          />
+          <h3 class="item-name">Grill Chicken (full)</h3>
+          <h3 class="item-prize">₹ : 300.00</h3>
+          <div class="cart-logo">
+            <h4>Add to cart</h4>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+        </div>
+
+        <div class="items" data-item="chilli chicken starters" data-id="9">
+          <img
+            src="img/chilli-chicken.png"
+            alt="Chilli Chicken"
+            width="120px"
+            height="130px"
+          />
+          <h3 class="item-name">Chilli Chicken</h3>
+          <h3 class="item-prize">₹ : 150.00</h3>
+          <div class="cart-logo">
+            <h4>Add to cart</h4>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+        </div>
+
+        <div class="items" data-item="chicken 65 starters" data-id="10">
+          <img
+            src="img/chicken65.png"
+            alt="Chicken 65"
+            width="120px"
+            height="130px"
+          />
+          <h3 class="item-name">Chicken 65</h3>
+          <h3 class="item-prize">₹ : 150.00</h3>
+          <div class="cart-logo">
+            <h4>Add to cart</h4>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+        </div>
+
+        <div class="items" data-item="prawn fry starters" data-id="11">
+          <img
+            src="img/prawn-fry.png"
+            alt="Prawn Fry"
+            width="120px"
+            height="150px"
+          />
+          <h3 class="item-name">Prawn Fry</h3>
+          <h3 class="item-prize">₹ : 200.00</h3>
+          <div class="cart-logo">
+            <h4>Add to cart</h4>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+        </div>
+
+        <div class="items" data-item="fish fry starters" data-id="12">
+          <img
+            src="img/fish-fry.png"
+            alt="Fish Fry"
+            width="120px"
+            height="150px"
+          />
+          <h3 class="item-name">Fish Fry</h3>
+          <h3 class="item-prize">₹ : 150.00</h3>
+          <div class="cart-logo">
+            <h4>Add to cart</h4>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+        </div>
+
+        <div class="items" data-item="chicken gravy starters" data-id="13">
+          <img
+            src="img/chicken-gravy.png"
+            alt="Chicken Gravy"
+            width="120px"
+            height="130px"
+          />
+          <h3 class="item-name">Chicken Gravy</h3>
+          <h3 class="item-prize">₹ : 120.00</h3>
+          <div class="cart-logo">
+            <h4>Add to cart</h4>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+        </div>
+
+        <div class="items" data-item="mutton gravy starters" data-id="14">
+          <img
+            src="img/mutton-gravy.png"
+            alt="Mutton Gravy"
+            width="120px"
+            height="130px"
+          />
+          <h3 class="item-name">Mutton Gravy</h3>
+          <h3 class="item-prize">₹ : 180.00</h3>
+          <div class="cart-logo">
+            <h4>Add to cart</h4>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+        </div>
+
+        <div class="items" data-item="prawn gravy starters" data-id="15">
+          <img
+            src="img/prawn-gravy.png"
+            alt="Prawn Gravy"
+            width="120px"
+            height="130px"
+          />
+          <h3 class="item-name">Prawn Gravy</h3>
+          <h3 class="item-prize">₹ : 160.00</h3>
+          <div class="cart-logo">
+            <h4>Add to cart</h4>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+        </div>
+
+        <div class="items" data-item="fish gravy starters" data-id="16">
+          <img
+            src="img/fish-gravy.png"
+            alt="Fish Gravy"
+            width="120px"
+            height="130px"
+          />
+          <h3 class="item-name">Fish Gravy</h3>
+          <h3 class="item-prize">₹ : 140.00</h3>
+          <div class="cart-logo">
+            <h4>Add to cart</h4>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+        </div>
+
+        <div class="items" data-item="Crab gravy starters" data-id="24">
+          <img
+            src="img/crabGravy.png"
+            alt="Crab Gravy"
+            width="120px"
+            height="130px"
+          />
+          <h3 class="item-name">Crab Gravy</h3>
+          <h3 class="item-prize">₹ : 170.00</h3>
+          <div class="cart-logo">
+            <h4>Add to cart</h4>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+        </div>
+
+        <div class="items" data-item="lemon juice" data-id="17">
+          <img
+            src="img/lemon.png"
+            alt="Leone Juice"
+            width="120px"
+            height="150px"
+          />
+          <h3 class="item-name">Leone Juice</h3>
+          <h3 class="item-prize">₹ : 60.00</h3>
+          <div class="cart-logo">
+            <h4>Add to cart</h4>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+        </div>
+
+        <div class="items" data-item="orange juice" data-id="18">
+          <img
+            src="img/orange.png"
+            alt="Orange Juice"
+            width="120px"
+            height="130px"
+          />
+          <h3 class="item-name">Orange Juice</h3>
+          <h3 class="item-prize">₹ : 80.00</h3>
+          <div class="cart-logo">
+            <h4>Add to cart</h4>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+        </div>
+
+        <div
+          class="items"
+          data-item="orange with strawberry juice"
+          data-id="19"
+        >
+          <img
+            src="img/orange-stabery.png"
+            alt="Orange with strawberry Juice"
+            width="120px"
+            height="130px"
+          />
+          <h3 class="item-name">Strawberry (Mix)</h3>
+          <h3 class="item-prize">₹ : 120.00</h3>
+          <div class="cart-logo">
+            <h4>Add to cart</h4>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+        </div>
+
+        <div class="items" data-item="blue berry juice" data-id="20">
+          <img
+            src="img/blue-bery.png"
+            alt="Blue berry Juice"
+            width="120px"
+            height="130px"
+          />
+          <h3 class="item-name">Blue berry</h3>
+          <h3 class="item-prize">₹ : 70.00</h3>
+          <div class="cart-logo">
+            <h4>Add to cart</h4>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+        </div>
+
+        <div class="items" data-item="strawberry juice" data-id="21">
+          <img
+            src="img/stabery.png"
+            alt="Strawberry"
+            width="120px"
+            height="130px"
+          />
+          <h3 class="item-name">Strawberry</h3>
+          <h3 class="item-prize">₹ : 90.00</h3>
+          <div class="cart-logo">
+            <h4>Add to cart</h4>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+        </div>
+
+        <div class="items" data-item="pineapple juice" data-id="22">
+          <img
+            src="img/pineapple.png"
+            alt="Pineapple"
+            width="120px"
+            height="130px"
+          />
+          <h3 class="item-name">Pineapple</h3>
+          <h3 class="item-prize">₹ : 80.00</h3>
+          <div class="cart-logo">
+            <h4>Add to cart</h4>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+        </div>
+
+        <div class="items" data-item="watermelon juice" data-id="23">
+          <img
+            src="img/watermelon.png"
+            alt="Watermelon"
+            width="120px"
+            height="130px"
+          />
+          <h3 class="item-name">Watermelon</h3>
+          <h3 class="item-prize">₹ : 70.00</h3>
+          <div class="cart-logo">
+            <h4>Add to cart</h4>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+        </div>
+      </div>
+
+      <!--Footer-->
+      <footer class="footer footerInfo">
+        <div class="footerContainer">
+          <div class="footerMain">
+            <div class="footerTerms">
+              <ul>
+                <li><a href="" class="hoverFooter">Services & Works</a></li>
+                <li><a href="" class="hoverFooter">Terms & condition</a></li>
+                <li><a href="" class="hoverFooter">Security and privacy</a></li>
+                <li>
+                  <a href="" class="hoverFooter">Food quality certification</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footerNav">
+              <div class="localNav">
+                <ul>
+                  <li><a href="index.html" class="hoverFooter">Menu</a></li>
+                  <li><a href="about.html" class="hoverFooter">About</a></li>
+                  <li>
+                    <a href="contact.html" class="hoverFooter">Contact us</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="footerContact">
+                <ul>
+                  <li>
+                    <a href="tel:+919962989886" class="hoverFooter">
+                      <img
+                        src="./img/phone-solid.svg"
+                        alt="Contact Logo"
+                        loading="lazy"
+                        width="15px"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="tel:+919962989886" class="hoverFooter">
+                      <img
+                        src="./img/whatsapp-brands-solid (1).svg"
+                        alt="What's app Logo"
+                        loading="lazy"
+                        width="15px"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.instagram.com/accounts/login/?hl=en"
+                      target="_blank"
+                      class="hoverFooter"
+                    >
+                      <img
+                        src="./img/instagram-brands-solid.svg"
+                        alt="Instagram Logo"
+                        loading="lazy"
+                        width="15px"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://x.com/i/flow/login?lang=en"
+                      target="_blank"
+                      class="hoverFooter"
+                    >
+                      <img
+                        src="./img/x-twitter-brands-solid.svg"
+                        alt="Twitter Logo"
+                        loading="lazy"
+                        width="15px"
+                      />
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footerDesigner">
+            <h6>
+              Design & Developed by
+              <span
+                ><a href="tel:+919962989886" target="_blank">Aravind S</a></span
+              >
+            </h6>
+            <p>&copy; <span id="year"></span> All rights reversed</p>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+      (function () {
+        emailjs.init("kRgRfLtxDuZUZyisN");
+      })();
+    </script>
+
+    <!--Script file-->
+    <script src="/js/menu.js"></script>
+    <script src="/js/script.js"></script>
+  </body>
+</html>
